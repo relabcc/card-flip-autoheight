@@ -1,7 +1,0 @@
-[site]
-bucket = "."
-site.entry-point = "workers-site"
-
-[env.production]
-name = "card-flip-autoheight"
-route = "card-flip-autoheight.pages.dev/*" 
