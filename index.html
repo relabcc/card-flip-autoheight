@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>卡片翻轉效果</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="card-container">
+      <div class="card">
+        <div class="card-front">
+          <i class="fas fa-question"></i>
+        </div>
+        <div class="card-back">
+          <div class="card-content">
+            <img src="https://picsum.photos/200" alt="示範圖片" />
+            <p>
+              這是一個示範用的卡片翻轉效果。當你點擊卡片時，它會平滑地翻轉並顯示背面的內容。這個效果使用了
+              CSS 3D
+              轉換來實現，讓整個動畫看起來更加自然流暢。當內容較多時，卡片會自動調整高度以容納所有內容，但翻回正面時又會恢復原始高度。這樣的設計可以確保內容的完整顯示，同時保持正面的簡潔美觀。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const card = document.querySelector(".card");
+      const cardBack = document.querySelector(".card-back");
+      const originalHeight = card.offsetHeight;
+
+      card.addEventListener("click", function () {
+        if (this.classList.contains("flipped")) {
+          // 翻回正面時恢復原始高度
+          this.style.height = originalHeight + "px";
+        } else {
+          // 翻轉到背面時根據內容調整高度
+          const contentHeight = cardBack.scrollHeight;
+          this.style.height = Math.max(originalHeight, contentHeight) + "px";
+        }
+        this.classList.toggle("flipped");
+      });
+    </script>
+  </body>
+</html>
