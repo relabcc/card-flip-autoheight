@@ -43,43 +43,28 @@
             </div>
         </div>
 
+        <script src="js/card-flip.js"></script>
         <script>
-            const card = document.querySelector(".card");
-            const cardText = document.querySelector(".card-text");
-            const tagButtons = document.querySelectorAll(".tag-btn");
-            
-            // 定義不同標籤的內容
+            // 定義標籤內容
             const contents = {
                 intro: "這是一張具有分頁標籤功能的翻轉卡片。點擊右側的標籤按鈕，可以切換不同的內容。這個設計讓卡片變得更加靈活，能夠展示更多的資訊。",
                 feature: "• 懸浮式分頁標籤\n• 平滑的內容切換效果\n• 響應式設計\n• 直覺的用戶界面\n• 可擴展的內容結構",
                 tech: "本示例使用了以下技術：\n• HTML5 用於結構\n• CSS3 實現翻轉動畫\n• Flexbox 處理布局\n• JavaScript 處理互動\n• Font Awesome 提供圖標"
             };
 
-            // 初始化顯示第一個標籤的內容
-            cardText.innerHTML = contents.intro.replace(/\n/g, '<br>');
-
-            // 處理卡片翻轉
-            card.addEventListener("click", function(e) {
-                // 如果點擊的是標籤按鈕，不觸發翻轉
-                if (!e.target.closest('.tag-btn')) {
-                    this.classList.toggle("flipped");
-                }
+            // 初始化卡片翻轉
+            new CardFlipper('.card', {
+                ignoreSelector: '.tag-btn'
             });
 
-            // 處理標籤切換
-            tagButtons.forEach(btn => {
-                btn.addEventListener("click", function(e) {
-                    e.stopPropagation(); // 防止觸發卡片翻轉
-                    
-                    // 移除所有按鈕的 active 狀態
-                    tagButtons.forEach(b => b.classList.remove("active"));
-                    // 添加當前按鈕的 active 狀態
-                    this.classList.add("active");
-                    
-                    // 更新內容
-                    const tag = this.dataset.tag;
-                    cardText.innerHTML = contents[tag].replace(/\n/g, '<br>');
-                });
+            // 初始化標籤管理
+            new TabManager({
+                tabSelector: '.tag-btn',
+                contentMap: contents,
+                contentElement: document.querySelector('.card-text'),
+                onTabChange: (tag) => {
+                    console.log('Tab changed to:', tag);
+                }
             });
         </script>
     </body>

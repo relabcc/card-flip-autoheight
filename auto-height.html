@@ -35,21 +35,13 @@
             </div>
         </div>
 
+        <script src="js/card-flip.js"></script>
         <script>
-            const card = document.querySelector(".card");
-            const cardBack = document.querySelector(".card-back");
-            const originalHeight = card.offsetHeight;
-
-            card.addEventListener("click", function () {
-                if (this.classList.contains("flipped")) {
-                    // 翻回正面時恢復原始高度
-                    this.style.height = originalHeight + "px";
-                } else {
-                    // 翻轉到背面時根據內容調整高度
-                    const contentHeight = cardBack.scrollHeight;
-                    this.style.height = Math.max(originalHeight, contentHeight) + "px";
+            new CardFlipper('.card', {
+                autoHeight: true,
+                onFlip: (isFlipped) => {
+                    console.log('Card is flipped:', isFlipped);
                 }
-                this.classList.toggle("flipped");
             });
         </script>
     </body>
