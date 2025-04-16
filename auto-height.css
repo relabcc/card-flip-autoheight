@@ -13,47 +13,23 @@ body {
     text-align: center;
 }
 
+.back-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+    color: #4a90e2;
+    font-weight: bold;
+}
+
 h1 {
     color: #333;
     margin-bottom: 40px;
 }
 
-.examples-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.example-card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-    color: #333;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.example-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.example-card h2 {
-    margin: 0 0 10px 0;
-    color: #4a90e2;
-}
-
-.example-card p {
-    margin: 0;
-    color: #666;
-    line-height: 1.5;
-}
-
 .card-container {
     perspective: 1000px;
+    margin: 20px auto;
 }
 
 .card {
